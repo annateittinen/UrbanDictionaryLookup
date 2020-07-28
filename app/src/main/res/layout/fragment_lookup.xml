@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".LookupFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        android:id="@+id/layout_term">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TERM: "
+            android:layout_weight=".1"
+            android:textStyle="bold"
+            android:id="@+id/textView_termLabel"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter a word"
+            android:layout_weight=".8"
+            android:id="@+id/editText_enterWord"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOOKUP"
+            android:layout_weight=".1"
+            android:id="@+id/buttonLookup"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_viewOrder"
+        android:layout_alignLeft="@+id/layout_term"
+        android:layout_below="@+id/layout_term">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_orderBy"
+            android:textStyle="bold"
+            android:text="VIEW ORDER:"/>
+
+        <Button
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
+            android:background="@drawable/thumbs_up_selected"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:layout_toRightOf="@+id/textView_orderBy"
+            android:id="@+id/buttonOrderByThumbsUp"
+            />
+
+        <Button
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
+            android:background="@drawable/thumbs_down"
+            android:layout_toRightOf="@+id/buttonOrderByThumbsUp"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:id="@+id/buttonOrderByThumbsDown"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_definitions"
+        android:layout_below="@+id/layout_viewOrder">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DEFINITIONS: "
+            android:textStyle="bold"
+            android:id="@+id/textView_definitions"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/textView_definitions"
+            android:text=""
+            android:id="@+id/textView_termLookedup"/>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyView"
+        android:layout_below="@+id/layout_definitions"
+        android:layout_alignLeft="@+id/layout_definitions"/>
+
+</RelativeLayout>

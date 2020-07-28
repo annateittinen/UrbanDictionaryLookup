@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_size">40sp</dimen>
+    <dimen name="button_size_small">20sp</dimen>
+    <dimen name="single_definition_view">1sp</dimen>
+    <dimen name="thin_padding">2sp</dimen>
+</resources>

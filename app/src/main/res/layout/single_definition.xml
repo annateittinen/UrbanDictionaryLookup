@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/single_definition_border"
+    android:paddingTop="@dimen/single_definition_view"
+    android:paddingBottom="@dimen/single_definition_view"
+    android:id="@+id/layout_singleDefinition">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1.0"
+        android:id="@+id/layout_thumbsUpDownCount">
+
+        <ImageView
+            android:layout_width="@dimen/button_size_small"
+            android:layout_height="@dimen/button_size_small"
+            android:src="@drawable/thumbs_up"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight=".1"
+            android:id="@+id/imageView_thumbsUp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight=".4"
+            android:id="@+id/textView_thumbsUpCount"/>
+
+        <ImageView
+            android:layout_width="@dimen/button_size_small"
+            android:layout_height="@dimen/button_size_small"
+            android:src="@drawable/thumbs_down"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight=".1"
+            android:id="@+id/imageView_thumbsDown"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:layout_weight=".4"
+            android:id="@+id/textView_thumbsDownCount"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_thumbsUpDownCount"
+        android:layout_alignLeft="@+id/layout_thumbsUpDownCount"
+        android:id="@+id/textView_desc"
+
+        android:ellipsize="marquee"
+            />
+
+</RelativeLayout>
