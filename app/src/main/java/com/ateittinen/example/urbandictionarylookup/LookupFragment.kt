@@ -3,7 +3,6 @@ package com.ateittinen.example.urbandictionarylookup
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.os.StrictMode
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -44,12 +43,6 @@ class LookupFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Set StrictMode.ThreadPolicy to catch long running code on the main thread.
-        // Avoid android.os.NetworkOnMainThreadException at android.os.StrictMode$AndroidBlockGuardPolicy.onNetwork
-        // This allows calls to server in LookupRepository.getDefinitions(...)
-        val policy: StrictMode.ThreadPolicy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
     }
 
     override fun onCreateView(

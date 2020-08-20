@@ -5,6 +5,7 @@ import com.ateittinen.example.urbandictionarylookup.domain.LookupUseCase
 import com.ww.roxie.BaseViewModel
 import com.ww.roxie.Reducer
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.ofType
 import io.reactivex.rxkotlin.plusAssign
@@ -58,15 +59,14 @@ class LookupViewModel(
         val loadObservable = actions.ofType<Action.Load>()
             .switchMap {
                 term = it.term
-                lookupUseCase.getDefinitions(sortByThumbsUp, term)
+                Single.fromCallable {
+                    lookupUseCase.getDefinitions(sortByThumbsUp, term)
+                }
                     .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
                     .toObservable()
-                    .doOnNext {
-                        if (!it.isSuccessful)
-                            throw Throwable(it.message + " [code " + it.code + "] RapidApi key missing or internet issue ")
-                    }
                     .map<Change> {
-                        allUrbanDictionaryDefinitions = it.allUrbanDictionaryDefinitions!!
+                        allUrbanDictionaryDefinitions = it.toFuture().get().allUrbanDictionaryDefinitions!!
                         Change.Loaded(term, allUrbanDictionaryDefinitions)
                     }
                     .onErrorReturn {
