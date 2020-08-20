@@ -66,7 +66,10 @@ class LookupViewModel(
                     .observeOn(AndroidSchedulers.mainThread())
                     .toObservable()
                     .map<Change> {
-                        allUrbanDictionaryDefinitions = it.toFuture().get().allUrbanDictionaryDefinitions!!
+                        //No need to call Single.toFuture().get()
+                        //Single.blockingGet() can be used instead; blocking will not happen since the
+                        //result has already been returned at this point in the stream.
+                        allUrbanDictionaryDefinitions = it.blockingGet().allUrbanDictionaryDefinitions!!
                         Change.Loaded(term, allUrbanDictionaryDefinitions)
                     }
                     .onErrorReturn {
